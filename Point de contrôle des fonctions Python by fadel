@@ -1,0 +1,42 @@
+def ajouter(n1, n2):
+    return n1 + n2
+
+def soustraire(n1, n2):
+    return n1 - n2
+
+def multiplier(n1, n2):
+    return n1 * n2
+
+def diviser(n1, n2):
+    return n1 / n2
+
+operations = {
+    "+": ajouter,
+    "-": soustraire,
+    "*": multiplier,
+    "/": diviser
+}
+
+def calculatrice():
+    num1 = float(input("Quel est le premier nombre? "))
+    
+    for symbole in operations:
+        print(symbole)
+        
+    should_continue = True
+
+    while should_continue:
+        operation_symbole = input("Choisissez une opération parmi les symboles ci-dessus : ")
+        num2 = float(input("Quel est le deuxième nombre? "))
+        fonction_calcul = operations[operation_symbole]
+        reponse = fonction_calcul(num1, num2)
+
+        print(f"{num1} {operation_symbole} {num2} = {reponse}")
+
+        if input("Voulez-vous continuer à calculer avec le résultat précédent? Tapez 'oui' ou 'non' \n") == 'non':
+            should_continue = False
+            calculatrice()
+        else:
+            num1 = reponse
+
+calculatrice()
